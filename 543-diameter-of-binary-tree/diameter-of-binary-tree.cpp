@@ -11,19 +11,20 @@
  */
 class Solution {
 
-int findDiameter(TreeNode* root, int& diameter){
+int findDiameter(TreeNode* root, int & diameter){
     // base case
-    if(!root){
-        return 0;
-    }
-    // find left and right for each node, it will help to solve in O(N)
-    int leftHeight = findDiameter(root->left, diameter);
-    int rightHeight = findDiameter(root->right, diameter);
+	if(!root)
+	{
+		return 0;
+	}
+    // finding diameter at each node
+	int leftHeight = findDiameter(root->left, diameter);
+	int rightHeight = findDiameter(root->right, diameter);
 
-    // stroe diameter as sum of both side, which ever is max, store that
-    diameter = max(diameter, (leftHeight + rightHeight));
+	diameter = max(diameter, leftHeight + rightHeight);
 
-    return max(leftHeight, rightHeight) + 1;
+    // return the side which have max length
+	return max(leftHeight, rightHeight) + 1;
 }
 
 
