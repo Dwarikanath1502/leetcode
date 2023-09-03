@@ -6,7 +6,8 @@ class Solution {
         if (root->val <= min || root->val >= max) {
             return false;
         }
-        return isBST(root->left, min, root->val) && isBST(root->right, root->val, max);
+        return isBST(root->left, min, root->val) 
+        && isBST(root->right, root->val, max);
     }
 public:
     bool isValidBST(TreeNode* root) {
