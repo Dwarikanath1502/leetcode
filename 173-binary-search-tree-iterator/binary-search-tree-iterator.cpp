@@ -10,34 +10,35 @@
  * };
  */
 class BSTIterator {
-    stack<TreeNode*> st;
 private:
-//helper method to store all left node
+    stack<TreeNode*> st;
+
     void helper(TreeNode* root){
         while(root){
             st.push(root);
-            root = root->left;
+            root= root->left;
         }
     }
+
 public:
-// constructor storing all left node to stack
     BSTIterator(TreeNode* root) {
         helper(root);
     }
-    // method returning next if there is next element
+    
     int next() {
         if(st.empty()){
             return -1;
         }
         TreeNode* node = st.top();
         st.pop();
+
         helper(node->right);
         return node->val;
     }
-    // check whether next element exists
+    
     bool hasNext() {
-       return !st.empty();
-    }
+        return !st.empty();        
+  }
 };
 
 /**
