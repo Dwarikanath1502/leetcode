@@ -3,15 +3,18 @@ public:
     int singleNumber(vector<int>& nums) {
         unordered_map<int, int>mp;
 
-      for(auto i = 0; i < nums.size(); i++){
-          mp[nums[i]]++;
-      }
+        // push all the elements to map and keep its count
+        for(auto it : nums){
+            mp[it]++;
+        }
 
-        for(auto it:mp){
-            if(it.second ==1){
+        // check if an element occuring once then return it
+        for(auto it : mp){
+            if(it.second == 1){
                 return it.first;
             }
         }
+        // if element with exact count 1 is not present return -1
         return -1;
     }
 };
